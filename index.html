@@ -478,6 +478,7 @@
             <a href="#opere" class="cta-button">Scopri le Mie Opere</a>
         </div>
     </section>
+
     <!-- Gallery Section -->
     <section id="opere">
         <h2 class="section-title fade-in">Le Mie Opere</h2>
@@ -550,7 +551,7 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork7">
-                    <br>cavalluccio.jpg<br><small>Carica: cavalluccio.jpg</small>
+                    🐎<br>Cavalluccio<br><small>Carica: cavalluccio.jpg</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
@@ -572,11 +573,11 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork9">
-                    💬<br>fumetto 2<br><small>Carica: fumetto2.jpg</small>
+                    💬<br>Fumetto 2<br><small>Carica: fumetto2.jpg</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
-                        <h3>Fumetto2</h3>
+                        <h3>Fumetto 2</h3>
                         <p>Fumetto Creativo</p>
                     </div>
                 </div>
@@ -616,7 +617,7 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork13">
-                    👨🏻<br>Immersione<br><small>Carica: immersione.jpg</small>
+                    🤿<br>Immersione<br><small>Carica: immersione.jpg</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
@@ -627,7 +628,7 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork14">
-                     <br>Autoritratto<br><small>Carica: mestesso.jpg</small>
+                    👨<br>Autoritratto<br><small>Carica: mestesso.jpg</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
@@ -638,7 +639,7 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork15">
-                    <br>Pokémon<br><small>Carica: pokemon.jpg</small>
+                    ⚡<br>Pokémon<br><small>Carica: pokemon.jpg</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
@@ -649,12 +650,34 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork16">
-                    🤽🏻<br>Comunione<br><small>Carica: comunione.jpg</small>
+                    ⛪<br>Comunione<br><small>Carica: comunione.jpg</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
                         <h3>Comunione</h3>
                         <p>Santa Comunione</p>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork fade-in">
+                <div class="placeholder-image" id="artwork17">
+                    🎉<br>Festa della Libertà<br><small>Carica: festadellaliberta.jpg</small>
+                </div>
+                <div class="artwork-overlay">
+                    <div class="artwork-info">
+                        <h3>Festa della Libertà</h3>
+                        <p>Celebrazione artistica della libertà</p>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork fade-in">
+                <div class="placeholder-image" id="artwork18">
+                    📺<br>Telefilm<br><small>Carica: telefilm.jpg</small>
+                </div>
+                <div class="artwork-overlay">
+                    <div class="artwork-info">
+                        <h3>Telefilm</h3>
+                        <p>Illustrazione ispirata alle serie TV</p>
                     </div>
                 </div>
             </div>
@@ -746,6 +769,8 @@
                 'artwork14': 'images/mestesso.jpg',
                 'artwork15': 'images/pokemon.jpg',
                 'artwork16': 'images/comunione.jpg',
+                'artwork17': 'images/festadellaliberta.jpg',
+                'artwork18': 'images/telefilm.jpg',
                 'qr-code': 'images/qr-instagram.png',
                 'gmail-icon': 'images/gmail-icon.png',
                 'paypal-icon': 'images/paypal-icon.png'
@@ -817,7 +842,7 @@
         // Artwork click to enlarge
         document.addEventListener('click', function(e) {
             if (e.target.closest('.artwork')) {
-                        const artwork = e.target.closest('.artwork');
+                const artwork = e.target.closest('.artwork');
                 const img = artwork.querySelector('img');
                 
                 if (img) {
