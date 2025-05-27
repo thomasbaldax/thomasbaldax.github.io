@@ -116,7 +116,7 @@
         }
 
         .mobile-nav a {
-            color: white;
+            color: rgb(255, 255, 255);
             text-decoration: none;
             padding: 0.5rem 2rem;
             transition: background 0.3s ease;
@@ -126,17 +126,19 @@
             background: rgba(255, 107, 107, 0.2);
         }
 
-        /* Hero Section */
-        .hero {
-            height: 50vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+       .hero {
+    height: 50vh;
+    background-image: url('images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
 
         .hero::before {
             content: '';
@@ -154,12 +156,13 @@
             50% { transform: translateY(-20px) rotate(2deg); }
         }
 
-        .hero-content {
-            z-index: 2;
-            color: white;
-            max-width: 400px;
-            padding: 1rem;
-        }
+       .hero-content {
+       z-index: 2;
+       max-width: 400px;
+       color: rgb(255, 255, 255);
+       padding: 1rem;
+       transform: translateY(-50px); /* <-- Aggiungi questa riga per spostare verso l'alto */
+}
 
         .hero h1 {
             font-size: 1.8rem;
@@ -169,11 +172,15 @@
         }
 
         .hero p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: slideInUp 1s ease 1s forwards;
-        }
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 20px; /* <-- Aggiungi questa riga per spostare verso il basso */
+    opacity: 0;
+    animation: slideInUp 1s ease 1s forwards;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
 
         .cta-button {
             display: inline-block;
