@@ -460,6 +460,10 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modal-arrow {
+        display: none !important;
+    }
         }
     </style>
 </head>
@@ -1022,6 +1026,7 @@
                     // Prev button
                     const prevBtn = document.createElement('button');
                     prevBtn.innerHTML = '&#8592;';
+                    prevBtn.className = 'modal-arrow';
                     prevBtn.style.cssText = `
                         position: absolute;
                         left: 30px;
@@ -1039,6 +1044,7 @@
                     // Next button
                     const nextBtn = document.createElement('button');
                     nextBtn.innerHTML = '&#8594;';
+                    nextBtn.className = 'modal-arrow';
                     nextBtn.style.cssText = `
                         position: absolute;
                         right: 30px;
@@ -1096,6 +1102,27 @@
                             document.removeEventListener('keydown', handler);
                         }
                     });
+
+                    let touchStartX = null;
+modal.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+    }
+});
+modal.addEventListener('touchend', function(e) {
+    if (touchStartX !== null && e.changedTouches.length === 1) {
+        let touchEndX = e.changedTouches[0].clientX;
+        let diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 50) { // soglia swipe
+            if (diff > 0) {
+                prevBtn.onclick(e);
+            } else {
+                nextBtn.onclick(e);
+            }
+        }
+        touchStartX = null;
+    }
+});
                 }
             }
         });
