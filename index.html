@@ -126,12 +126,13 @@
             background: rgba(255, 107, 107, 0.2);
         }
 
-       .hero {
-    height: 50vh;
+        .hero {
+    height: 100vh;
     background-image: url('images/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
+    background-size: cover; /* Copre tutto lo schermo mantenendo proporzioni */
+    background-position: center center; /* Centra l'immagine */
     background-repeat: no-repeat;
+    background-color: #d4a574; /* Colore di sfondo che richiama i toni dell'illustrazione */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,13 +232,18 @@
 
         /* Gallery */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: row;
             gap: 2rem;
-            margin-top: 3rem;
+            overflow-x: auto;
+            padding-bottom: 2rem;
+            scroll-snap-type: x mandatory;
         }
 
         .artwork {
+            min-width: 320px;
+            flex: 0 0 auto;
+            scroll-snap-align: start;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
@@ -846,13 +852,16 @@
             });
         });
 
-        // Artwork click to enlarge
+        // Artwork click to enlarge and scroll like a book
         document.addEventListener('click', function(e) {
-            if (e.target.closest('.artwork')) {
-                const artwork = e.target.closest('.artwork');
-                const img = artwork.querySelector('img');
-                
+            const artworks = Array.from(document.querySelectorAll('.gallery .artwork img'));
+            const clickedArtwork = e.target.closest('.artwork');
+            if (clickedArtwork) {
+                const img = clickedArtwork.querySelector('img');
                 if (img) {
+                    let currentIndex = artworks.indexOf(img);
+
+                    // Modal creation
                     const modal = document.createElement('div');
                     modal.style.cssText = `
                         position: fixed;
@@ -865,9 +874,9 @@
                         align-items: center;
                         justify-content: center;
                         z-index: 10000;
-                        cursor: pointer;
                     `;
-                    
+
+                    // Image element
                     const enlargedImg = document.createElement('img');
                     enlargedImg.src = img.src;
                     enlargedImg.style.cssText = `
@@ -875,13 +884,85 @@
                         max-height: 90%;
                         object-fit: contain;
                         border-radius: 10px;
+                        box-shadow: 0 0 40px #000;
                     `;
-                    
+
+                    // Prev button
+                    const prevBtn = document.createElement('button');
+                    prevBtn.innerHTML = '&#8592;';
+                    prevBtn.style.cssText = `
+                        position: absolute;
+                        left: 30px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 2.5rem;
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        cursor: pointer;
+                        z-index: 10001;
+                        padding: 0 10px;
+                    `;
+
+                    // Next button
+                    const nextBtn = document.createElement('button');
+                    nextBtn.innerHTML = '&#8594;';
+                    nextBtn.style.cssText = `
+                        position: absolute;
+                        right: 30px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 2.5rem;
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        cursor: pointer;
+                        z-index: 10001;
+                        padding: 0 10px;
+                    `;
+
+                    // Funzione per aggiornare l'immagine
+                    function showImage(index) {
+                        if (index >= 0 && index < artworks.length) {
+                            enlargedImg.src = artworks[index].src;
+                            currentIndex = index;
+                        }
+                    }
+
+                    prevBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        showImage((currentIndex - 1 + artworks.length) % artworks.length);
+                    };
+
+                    nextBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        showImage((currentIndex + 1) % artworks.length);
+                    };
+
+                    modal.appendChild(prevBtn);
                     modal.appendChild(enlargedImg);
+                    modal.appendChild(nextBtn);
                     document.body.appendChild(modal);
-                    
-                    modal.addEventListener('click', function() {
-                        document.body.removeChild(modal);
+
+                    // Chiudi il modal cliccando fuori dall'immagine
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+
+                    // Navigazione con frecce tastiera
+                    document.addEventListener('keydown', function handler(ev) {
+                        if (!document.body.contains(modal)) {
+                            document.removeEventListener('keydown', handler);
+                            return;
+                        }
+                        if (ev.key === 'ArrowLeft') prevBtn.onclick(ev);
+                        if (ev.key === 'ArrowRight') nextBtn.onclick(ev);
+                        if (ev.key === 'Escape') {
+                            document.body.removeChild(modal);
+                            document.removeEventListener('keydown', handler);
+                        }
                     });
                 }
             }
@@ -898,4 +979,4 @@
         });
     </script>
 </body>
-</html>        
+</html>
