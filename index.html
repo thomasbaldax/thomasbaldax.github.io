@@ -220,15 +220,22 @@
             margin: 0 auto;
         }
 
-        .section-title {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0; /* Rimuovi il margin-bottom dal titolo */
+}
 
         /* Gallery */
         .gallery {
@@ -422,6 +429,19 @@
             line-height: 1.6;
         }
 
+        /* Aggiungi questo stile nella sezione <style> */
+.gallery-instruction {
+    text-align: center;
+    color: #666;
+    font-size: 1rem;
+    font-style: italic;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .nav-links {
@@ -465,6 +485,24 @@
         display: none !important;
     }
         }
+
+        /* Modifica lo stile .instagram-link esistente nella sezione <style> */
+.instagram-link {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.instagram-link img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.instagram-link:hover {
+    transform: scale(1.1);
+}
     </style>
 </head>
 <body>
@@ -498,7 +536,12 @@
 
     <!-- Gallery Section -->
     <section id="opere">
-        <h2 class="section-title fade-in">Le Mie Opere</h2>
+        <div class="title-container fade-in">
+            <a href="https://www.instagram.com/thomas_baldax/" class="instagram-link" target="_blank">
+                <img src="images/instagram-logo.png" alt="Instagram Thomas Baldax">
+            </a>
+            <h2 class="section-title">Le Mie Opere</h2>
+        </div>
         <div class="gallery">
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork1">
@@ -819,6 +862,9 @@
                     </div>
                 </div>
             </div>
+        </div> <!-- chiusura del div .gallery -->
+        <div class="gallery-instruction fade-in">
+            ← Scorri a destra per vedere tutte le immagini →
         </div>
     </section>
 
