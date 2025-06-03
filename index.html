@@ -575,46 +575,56 @@
     }
 
     .hero {
-        height: 60vh; /* Riduce l'altezza su mobile */
+        height: calc(100vh - 35px); /* Altezza viewport meno altezza navbar */
+        background-size: contain; /* Mostra l'immagine intera */
         background-position: top center;
-        background-size: 100% auto;
-        padding: 0 1rem;
+        background-repeat: no-repeat;
+        margin-top: 35px; /* Spazio per la navbar */
+        padding: 0;
+        display: flex;
+        align-items: flex-end; /* Sposta il contenuto in basso */
+        justify-content: center;
     }
 
     .hero-content {
-        transform: translateY(0); /* Rimuove lo spostamento verso l'alto */
-        padding: 0.5rem;
-        margin-top: -20vh; /* Sposta leggermente verso l'alto */
+        background: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+        width: 100%;
+        padding: 1rem;
+        transform: translateY(0);
+        margin: 0;
+        backdrop-filter: blur(5px);
     }
 
     .hero h1 {
-        font-size: 2rem; /* Riduce la dimensione del titolo */
+        font-size: 2rem;
         margin-bottom: 0.3rem;
-        white-space: nowrap; /* Mantiene il testo su una riga */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .hero p {
-        font-size: 1rem; /* Riduce la dimensione del sottotitolo */
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
 
     .hero::before {
-        opacity: 0.5; /* Riduce l'opacità dell'overlay */
+        display: none; /* Rimuove l'overlay decorativo */
     }
 }
 
 /* Ottimizzazione per schermi molto piccoli */
 @media (max-width: 380px) {
+    .hero {
+        background-size: contain;
+        background-position: top center;
+    }
+
     .hero h1 {
         font-size: 1.8rem;
     }
 
     .hero p {
         font-size: 0.9rem;
-    }
-
-    .hero {
-        height: 50vh;
     }
 }
     </style>
