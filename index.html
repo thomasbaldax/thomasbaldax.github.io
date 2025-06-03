@@ -165,10 +165,10 @@
         .hero {
     height: 100vh;
     background-image: url('images/hero-background.jpg');
-    background-size: cover; /* Copre tutto lo schermo mantenendo proporzioni */
-    background-position: center center; /* Centra l'immagine */
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-color: #d4a574; /* Colore di sfondo che richiama i toni dell'illustrazione */
+    background-color: transparent; /* Cambiato da #d4a574 a transparent */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -575,56 +575,35 @@
     }
 
     .hero {
-        height: calc(100vh - 35px); /* Altezza viewport meno altezza navbar */
-        background-size: contain; /* Mostra l'immagine intera */
+        height: calc(100vh - 35px);
+        background-size: contain;
         background-position: top center;
         background-repeat: no-repeat;
-        margin-top: 35px; /* Spazio per la navbar */
+        background-color: transparent; /* Rimuove il colore di sfondo */
+        margin-top: 35px;
         padding: 0;
         display: flex;
-        align-items: flex-end; /* Sposta il contenuto in basso */
+        align-items: flex-end;
         justify-content: center;
     }
 
     .hero-content {
-        background: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+        background: rgba(0, 0, 0, 0.5);
         width: 100%;
         padding: 1rem;
         transform: translateY(0);
-        margin: 0;
+        position: absolute; /* Posizionamento assoluto */
+        bottom: 0; /* Attacca al fondo */
+        left: 0;
+        right: 0;
         backdrop-filter: blur(5px);
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-        margin-bottom: 0.3rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    }
-
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    }
-
-    .hero::before {
-        display: none; /* Rimuove l'overlay decorativo */
     }
 }
 
 /* Ottimizzazione per schermi molto piccoli */
 @media (max-width: 380px) {
     .hero {
-        background-size: contain;
-        background-position: top center;
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .hero p {
-        font-size: 0.9rem;
+        background-color: transparent; /* Assicurati che sia trasparente anche qui */
     }
 }
     </style>
