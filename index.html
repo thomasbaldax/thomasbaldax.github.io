@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thomas Baldax - Illustratore</title>
+    
+    <!-- Meta tags SEO -->
+    <meta name="description" content="Thomas Baldax - Illustratore digitale specializzato in character design, concept art e illustrazioni personalizzate. Portfolio e servizi di illustrazione professionale.">
+    <meta name="keywords" content="illustratore, illustrazione digitale, character design, concept art, Thomas Baldax">
+    <meta name="author" content="Thomas Baldax">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Thomas Baldax - Illustratore Digitale">
+    <meta property="og:description" content="Portfolio e servizi di illustrazione digitale professionale">
+    <meta property="og:image" content="images/og-preview.jpg">
+    <meta property="og:url" content="https://thomasbaldax.com">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -67,7 +84,6 @@
 
         .nav-links a {
             color: white;
-            text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -90,6 +106,22 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .social-header {
+            margin-left: auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #ff6b6b;
         }
 
         /* Mobile menu */
@@ -162,44 +194,46 @@
        max-width: 400px;
        color: rgb(255, 255, 255);
        padding: 1rem;
-       transform: translateY(20px); /* <-- Aggiungi questa riga per spostare verso l'alto */
+       transform: translateY(-70px); /* Modificato da 20px a -100px per spostare verso l'alto */
 }
 
         .hero h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.3rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
             opacity: 0;
             animation: slideInUp 1s ease 0.5s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 600;
+            letter-spacing: 1px;
         }
 
         .hero p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 20px; /* <-- Aggiungi questa riga per spostare verso il basso */
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
     opacity: 0;
     animation: slideInUp 1s ease 1s forwards;
     color: #ffffff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: bold; /* Aggiunto font-weight: bold */
 }
 
         .cta-button {
             display: inline-block;
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
+            font-weight: 500;
             transition: all 0.3s ease;
             opacity: 0;
             animation: slideInUp 1s ease 1.5s forwards;
-            font-size: 0.8rem;
+            font-size: 1rem;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes slideInUp {
@@ -222,19 +256,58 @@
 
         .title-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
     margin-bottom: 3rem;
+    text-align: center;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.instagram-link img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.instagram-link:hover {
+    transform: scale(1.1);
 }
 
 .section-title {
     font-size: 3rem;
     text-align: center;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #764ba2, #667eea);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin: 0; /* Rimuovi il margin-bottom dal titolo */
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background-size: 300% 300%;
+    animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
         /* Gallery */
@@ -444,64 +517,73 @@
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-                margin-left: auto;
-            }
-
-            .hero {
-                height: 40vh;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .about {
-                padding: 2rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-arrow {
-        display: none !important;
+            .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
     }
-        }
 
-        /* Modifica lo stile .instagram-link esistente nella sezione <style> */
-.instagram-link {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 15px;
-    transition: transform 0.3s ease;
+    .nav-links {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 0.5rem 0;
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        display: block;
+    }
+
+    .social-header {
+        margin: 0;
+        padding: 0;
+    }
+
+    .social-icon {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+    }
+
+    /* Rimuovi il menu hamburger che non serve più */
+    .mobile-menu {
+        display: none;
+    }
+
+    /* Aggiusta il padding della navbar */
+    nav {
+        padding: 0.8rem 0;
+    }
+
+    nav.scrolled {
+        padding: 0.5rem 0;
+    }
 }
 
-.instagram-link img {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-}
+/* Aggiungi stili per migliorare il touch su mobile */
+@media (hover: none) {
+    .nav-links a {
+        -webkit-tap-highlight-color: transparent;
+    }
 
-.instagram-link:hover {
-    transform: scale(1.1);
+    .nav-links a:active {
+        background: rgba(255, 107, 107, 0.2);
+        transform: scale(0.95);
+    }
+
+    .social-icon:active {
+        transform: scale(0.9);
+        color: #ff6b6b;
+    }
 }
     </style>
 </head>
@@ -515,12 +597,13 @@
                 <li><a href="#about">Chi Sono</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
-            <div class="mobile-menu" onclick="toggleMobileMenu()">☰</div>
-            <div class="mobile-nav" id="mobileNav">
-                <a href="#home" onclick="closeMobileMenu()">Home</a>
-                <a href="#opere" onclick="closeMobileMenu()">Le Mie Opere</a>
-                <a href="#about" onclick="closeMobileMenu()">Chi Sono</a>
-                <a href="#contatti" onclick="closeMobileMenu()">Contatti</a>
+            <div class="social-header">
+                <a href="https://www.instagram.com/thomas_baldax/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:tommaso.baldassarra@gmail.com" class="social-icon">
+                    <i class="far fa-envelope"></i>
+                </a>
             </div>
         </div>
     </nav>
@@ -530,17 +613,17 @@
         <div class="hero-content">
             <h1>THOMAS BALDAX</h1>
             <p>Illustratore • Artista</p>
-            <a href="#opere" class="cta-button">Scopri le Mie Opere</a>
         </div>
     </section>
 
     <!-- Gallery Section -->
     <section id="opere">
+        <h2 class="section-title fade-in">Le Mie Opere</h2>
         <div class="title-container fade-in">
             <a href="https://www.instagram.com/thomas_baldax/" class="instagram-link" target="_blank">
                 <img src="images/instagram-logo.png" alt="Instagram Thomas Baldax">
+                <span>Seguimi su Instagram</span>
             </a>
-            <h2 class="section-title">Le Mie Opere</h2>
         </div>
         <div class="gallery">
             <div class="artwork fade-in">
