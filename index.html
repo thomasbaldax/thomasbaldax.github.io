@@ -577,33 +577,39 @@
     .hero {
         height: calc(100vh - 35px);
         background-size: contain;
-        background-position: top center;
+        background-position: center center; /* Modificato in center center */
         background-repeat: no-repeat;
-        background-color: transparent; /* Rimuove il colore di sfondo */
+        background-color: transparent;
         margin-top: 35px;
         padding: 0;
         display: flex;
-        align-items: center; /* Cambiato da flex-end a center */
+        align-items: center;
         justify-content: center;
+        position: relative;
     }
 
     .hero-content {
         background: rgba(0, 0, 0, 0.5);
         width: 100%;
         padding: 1rem;
-        transform: translateY(-93px); /* Ripristina il valore del desktop */
-        position: relative; /* Cambiato da absolute a relative */
+        transform: translateY(0); /* Rimosso il translateY negativo */
+        position: absolute;
+        top: 50%; /* Aggiunto per centrare verticalmente */
+        left: 50%; /* Aggiunto per centrare orizzontalmente */
+        transform: translate(-50%, -50%); /* Centra perfettamente */
         backdrop-filter: blur(5px);
     }
 
     .hero h1 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .hero p {
         font-size: 1.2rem;
         margin-bottom: 1rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
 }
 
@@ -614,7 +620,7 @@
     }
 
     .hero-content {
-        transform: translateY(-50px); /* Aggiusta per schermi molto piccoli */
+        transform: translate(-50%, -50%); /* Mantiene il centramento perfetto */
     }
 }
     </style>
