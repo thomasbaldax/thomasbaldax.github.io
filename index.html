@@ -168,7 +168,7 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: transparent; /* Cambiato da #d4a574 a transparent */
+    background-color: transparent; /* Rimuove il colore di sfondo */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -583,7 +583,7 @@
         margin-top: 35px;
         padding: 0;
         display: flex;
-        align-items: flex-end;
+        align-items: center; /* Cambiato da flex-end a center */
         justify-content: center;
     }
 
@@ -591,19 +591,30 @@
         background: rgba(0, 0, 0, 0.5);
         width: 100%;
         padding: 1rem;
-        transform: translateY(0);
-        position: absolute; /* Posizionamento assoluto */
-        bottom: 0; /* Attacca al fondo */
-        left: 0;
-        right: 0;
+        transform: translateY(-93px); /* Ripristina il valore del desktop */
+        position: relative; /* Cambiato da absolute a relative */
         backdrop-filter: blur(5px);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
 }
 
 /* Ottimizzazione per schermi molto piccoli */
 @media (max-width: 380px) {
     .hero {
-        background-color: transparent; /* Assicurati che sia trasparente anche qui */
+        background-color: transparent;
+    }
+
+    .hero-content {
+        transform: translateY(-50px); /* Aggiusta per schermi molto piccoli */
     }
 }
     </style>
