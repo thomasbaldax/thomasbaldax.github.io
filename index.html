@@ -521,55 +521,57 @@
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .nav-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
+            /* Stile navbar minimal */
+    nav {
+        padding: 0.3rem 0;
+        height: auto;
+        min-height: 35px;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        max-width: 100%;
     }
 
     .nav-links {
         display: flex;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 0.5rem 0;
+        gap: 0.8rem;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
     }
 
     .nav-links li {
         margin: 0;
+        white-space: nowrap;
     }
 
     .nav-links a {
-        font-size: 0.9rem;
-        padding: 0.5rem 0.8rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        display: block;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+        background: none;
+        color: white;
+        text-decoration: none;
     }
 
     .social-header {
-        margin: 0;
-        padding: 0;
+        display: flex;
+        gap: 0.5rem;
+        margin-left: 0.5rem;
     }
 
     .social-icon {
-        font-size: 1.4rem;
-        padding: 0.5rem;
-    }
-
-    /* Rimuovi il menu hamburger che non serve più */
-    .mobile-menu {
-        display: none;
-    }
-
-    /* Aggiusta il padding della navbar */
-    nav {
-        padding: 0.8rem 0;
-    }
-
-    nav.scrolled {
-        padding: 0.5rem 0;
+        font-size: 0.9rem;
+        padding: 0;
     }
 }
 
