@@ -517,8 +517,8 @@
         @media (max-width: 768px) {
             nav {
         padding: 0 !important;
-        height: 28px !important;
-        min-height: 28px !important;
+        height: 38px !important; /* leggermente più alta per le icone */
+        min-height: 38px !important;
         background: rgba(0,0,0,0.7) !important;
         display: flex;
         align-items: center;
@@ -538,19 +538,21 @@
     }
 
     .social-icon {
-        font-size: 1rem !important;
+        font-size: 1.1rem !important;
     }
 
     .hero {
-        height: 100vh !important;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
+        height: 45vw !important; /* proporzionale, più piccola su mobile */
+        min-height: 180px !important;
+        max-height: 320px !important;
+        background-size: contain !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
         background-color: transparent;
-        margin-top: 0 !important;
+        margin-top: 38px !important; /* esattamente l'altezza della navbar */
         padding: 0 !important;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         position: relative;
     }
@@ -558,7 +560,7 @@
     .hero-content {
         transform: none !important;
         margin-top: 0 !important;
-        padding-top: 40px !important; /* Spazio per la navbar */
+        padding-top: 0 !important;
     }
 
     #opere {
