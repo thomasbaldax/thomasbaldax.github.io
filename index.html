@@ -516,28 +516,34 @@
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             nav {
-        padding: 0;
-        height: auto;
-        min-height: 35px;
-        margin-bottom: 0;
+        padding: 0 !important;
+        height: 35px !important;
+        min-height: 35px !important;
+        margin-bottom: 0 !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-container {
+        padding: 0 0.5rem !important;
     }
 
     .hero {
-        height: calc(100vh - 35px);
+        height: calc(100vh - 35px) !important;
         background-size: cover;
         background-position: top center;
         background-repeat: no-repeat;
         background-color: transparent;
-        margin-top: 35px !important; /* Solo per compensare la navbar fissa */
+        margin-top: 35px !important;
         padding: 0 !important;
         display: flex;
-        align-items: flex-start; /* Allinea il contenuto in alto */
+        align-items: flex-start;
         justify-content: center;
         position: relative;
     }
 
     .hero-content {
-        transform: none !important; /* Elimina eventuali traslazioni */
+        transform: none !important;
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
