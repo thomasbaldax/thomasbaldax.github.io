@@ -576,18 +576,23 @@
         background-size: contain !important;
         background-position: center top !important;
         background-repeat: no-repeat !important;
-        min-height: 100vh;
-        height: auto;
+        height: auto !important;
+        min-height: 0 !important;
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
+        display: block !important;
+    }
+    .hero-content {
+        transform: none !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
     }
     #opere {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
-    .hero-content {
-        transform: none !important; /* Elimina la traslazione verso l'alto */
-        padding-bottom: 0 !important;
+    body {
+        padding-top: 0 !important;
     }
 }
 
