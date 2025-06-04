@@ -573,28 +573,39 @@
         padding: 0 0.1rem;
     }
     .hero {
-        background-size: contain !important; /* Mostra tutta l'immagine su mobile */
+        background-size: contain !important;
         background-position: top center !important;
         background-repeat: no-repeat !important;
-        min-height: 100vh !important;
-        height: 100vh !important;
+        min-height: auto !important; /* Rimuovi l'altezza minima fissa */
+        height: auto !important; /* Altezza automatica invece di 100vh */
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
         display: flex !important;
         align-items: flex-start !important;
         justify-content: center !important;
     }
+
     .hero-content {
         transform: none !important;
         padding-bottom: 0 !important;
-        padding-top: 4rem !important; /* aumenta questo valore per abbassare la scritta */
+        padding-top: 4rem !important;
         width: 100%;
         max-width: 100vw;
         box-sizing: border-box;
     }
+
     #opere {
+        margin-top: -20px !important; /* Sposta la sezione opere verso l'alto */
+        padding-top: 0 !important;
+    }
+
+    .section-title {
         margin-top: 0 !important;
         padding-top: 0 !important;
+    }
+
+    .title-container {
+        margin-top: 0 !important;
     }
 }
 
