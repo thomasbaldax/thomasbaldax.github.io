@@ -517,24 +517,37 @@
         @media (max-width: 768px) {
             nav {
         padding: 0 !important;
-        height: 35px !important;
-        min-height: 35px !important;
-        margin-bottom: 0 !important;
+        height: 28px !important;
+        min-height: 28px !important;
+        background: rgba(0,0,0,0.7) !important;
         display: flex;
         align-items: center;
     }
 
     .nav-container {
-        padding: 0 0.5rem !important;
+        padding: 0 0.3rem !important;
+    }
+
+    .nav-links a {
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.3rem !important;
+    }
+
+    .social-header {
+        gap: 0.5rem !important;
+    }
+
+    .social-icon {
+        font-size: 1rem !important;
     }
 
     .hero {
-        height: calc(100vh - 35px) !important;
+        height: 100vh !important;
         background-size: cover;
-        background-position: top center;
+        background-position: center center;
         background-repeat: no-repeat;
         background-color: transparent;
-        margin-top: 35px !important;
+        margin-top: 0 !important;
         padding: 0 !important;
         display: flex;
         align-items: flex-start;
@@ -545,7 +558,7 @@
     .hero-content {
         transform: none !important;
         margin-top: 0 !important;
-        padding-top: 0 !important;
+        padding-top: 40px !important; /* Spazio per la navbar */
     }
 
     #opere {
