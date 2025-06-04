@@ -45,17 +45,23 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #000 !important; /* Cambiato in nero pieno */
+            background: #000 !important;
             backdrop-filter: blur(10px);
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+            transition: background 0.4s, box-shadow 0.4s;
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background: rgba(30,30,30,0.7) !important; /* Più chiaro ma leggibile */
-            transition: background 0.3s;
+            background: rgba(0,0,0,0.55) !important; /* Navbar trasparente quando scrolli */
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
         }
+
+        @keyframes navbarFadeIn {
+    from { opacity: 0; transform: translateY(-30px);}
+    to { opacity: 1; transform: translateY(0);}
+}
 
         .nav-container {
             display: flex;
@@ -78,8 +84,8 @@
             display: flex;
             gap: 0.8rem;
             margin: 0;
-            padding: 0;
-            list-style: none; /* Rimuove i puntini */
+            padding: 0 0.5rem 0 1.2rem; /* Sposta "Home" più a destra */
+            list-style: none;
         }
 
         .nav-links li {
@@ -107,9 +113,12 @@
         }
 
         .nav-links a:hover {
-            color: #ff6b6b;
-            transform: translateY(-2px);
-        }
+    color: #fff;
+    background: linear-gradient(90deg, #ff6b6b 0%, #4ecdc4 100%);
+    border-radius: 8px;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    transform: translateY(-2px) scale(1.07);
+}
 
         .nav-links a::after,
 .nav-links a:hover::after {
@@ -125,7 +134,8 @@
         .social-header {
             display: flex;
             gap: 0.8rem;
-            margin-left: 0.5rem;
+            margin-left: 0; /* Elimina lo spazio a sinistra */
+    margin-right: 1.2rem; /* Sposta le icone più a sinistra */
         }
 
         .social-icon {
@@ -211,24 +221,30 @@
        transform: translateY(-140px); /* Alzata da -93px a -140px */
 }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: slideInUp 1s ease 0.5s forwards;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+        .hero h1,
+.hero p {
     opacity: 0;
-    animation: slideInUp 1s ease 1s forwards;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    font-weight: bold; /* Aggiunto font-weight: bold */
+    transform: translateY(40px);
+    animation: heroFadeInUp 2s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+.hero h1 {
+    animation-delay: 0.5s;
+}
+
+.hero p {
+    animation-delay: 1.2s;
+}
+
+@keyframes heroFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
         .cta-button {
@@ -472,10 +488,28 @@
 
         /* Footer */
         footer {
-            background: #333;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #764ba2, #667eea);
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1rem 1rem 1rem;
+            position: relative;
+        }
+
+        .footer-social {
+            margin: 0 0 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .footer-social a {
+            color: #fff;
+            font-size: 1.4rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #ff6b6b;
         }
 
         /* Scroll animations */
@@ -525,81 +559,34 @@
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            /* Navbar più compatta */
-    nav {
-        padding: 0 !important;
-        height: 25px !important;
-        min-height: 25px !important;
-        background: #000 !important; /* Cambiato in nero pieno */
+            .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.12rem 0.25rem;
     }
-
-    .nav-container {
-        padding: 0 0.5rem !important;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    .nav-links li {
+        padding: 0.02rem 0.08rem;
     }
-
-    .nav-links {
-        display: flex;
-        gap: 0.3rem !important;
-    }
-
-    .nav-links a {
-        font-family: 'Montserrat', Arial, sans-serif !important;
-        font-size: 1.2rem !important;
-        padding: 0.25rem 0.5rem !important;
-    }
-
-    .social-header {
-        display: flex !important;
-        gap: 0.8rem !important;
-        margin-left: auto !important;
-        height: 25px !important;
-        align-items: center !important;
-    }
-
     .social-icon {
-        font-size: 0.8rem !important;
-        color: white !important;
-        line-height: 25px !important;
+        font-size: 0.85rem;
     }
-
-    /* Hero section ottimizzata */
-    .hero {
-        height: auto !important;
-        padding-top: calc(100vw * 0.75) !important; /* Aspect ratio 4:3 */
-        background-size: contain !important;
-        background-position: top center !important;
-        margin-top: 25px !important;
-    }
-
-    .hero-content {
-        position: relative !important;
-        padding: 1rem !important;
-        margin-top: 0 !important; /* Alza la scritta */
-        top: -60px !important; /* Alzata da -30px a -60px */
-    }
-
-    /* Alza la sezione "Le Mie Opere" */
-    #opere {
-        margin-top: 0.5rem !important; /* Ridotto da 2rem a 0.5rem */
+    .nav-container {
+        padding: 0 0.1rem;
     }
 }
 
-/* Ottimizzazione per schermi molto piccoli */
-@media (max-width: 380px) {
-    nav {
-        height: 22px !important;
-        min-height: 22px !important;
-    }
-
+        @media (max-width: 480px) {
     .nav-links a {
-        font-size: 0.55rem !important;
+        font-size: 0.62rem;
+        padding: 0.08rem 0.13rem;
     }
-
+    .nav-links li {
+        padding: 0.01rem 0.04rem;
+    }
     .social-icon {
-        font-size: 0.7rem !important;
+        font-size: 0.7rem;
+    }
+    .nav-container {
+        padding: 0 0.05rem;
     }
 }
     </style>
@@ -1015,6 +1002,14 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/thomas_baldax/" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:tommaso.baldassarra@gmail.com" aria-label="Email">
+                <i class="far fa-envelope"></i>
+            </a>
+        </div>
         <p>&copy; 2025 Thomas Baldax. Tutti i diritti riservati.</p>
     </footer>
 
