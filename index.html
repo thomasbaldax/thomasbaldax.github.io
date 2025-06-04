@@ -518,99 +518,75 @@
             /* Navbar più compatta */
     nav {
         padding: 0 !important;
-        height: 30px !important; /* Ridotta da 38px a 30px */
-        min-height: 30px !important;
+        height: 25px !important;
+        min-height: 25px !important;
         background: rgba(0,0,0,0.7) !important;
-        display: flex;
-        align-items: center;
     }
 
     .nav-container {
         padding: 0 0.5rem !important;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        width: 100%;
     }
 
     .nav-links {
         display: flex;
-        gap: 0.4rem !important;
+        gap: 0.3rem !important;
     }
 
     .nav-links a {
-        font-size: 0.65rem !important;
-        padding: 0.2rem 0.3rem !important;
+        font-size: 0.6rem !important;
+        padding: 0.15rem 0.25rem !important;
     }
 
     .social-header {
         display: flex !important;
-        gap: 0.5rem !important;
-        margin-left: 0.5rem !important;
+        gap: 0.8rem !important;
+        margin-left: auto !important;
+        height: 25px !important;
+        align-items: center !important;
     }
 
     .social-icon {
-        font-size: 0.9rem !important;
+        font-size: 0.8rem !important;
         color: white !important;
+        line-height: 25px !important;
     }
 
     /* Hero section ottimizzata */
     .hero {
-        height: 100vh !important;
-        background-size: 100% auto !important;  /* Modificato da contain a 100% auto */
-        background-position: center top !important; /* Modificato da center a center top */
-        background-repeat: no-repeat !important;
-        margin-top: 30px !important;
-        position: relative !important;
-        width: 100% !important;
-        overflow: hidden !important;
-        padding-top: 0 !important; /* Rimosso il padding-top */
+        height: auto !important;
+        padding-top: calc(100vw * 0.75) !important; /* Aspect ratio 4:3 */
+        background-size: contain !important;
+        background-position: top center !important;
+        margin-top: 25px !important;
     }
 
     .hero-content {
-        position: absolute !important;
-        bottom: 20% !important; /* Modificato da top: 50% a bottom: 20% */
-        left: 50% !important;
-        transform: translateX(-50%) !important; /* Rimosso translateY */
-        width: 100% !important;
+        position: relative !important;
         padding: 1rem !important;
-        text-align: center !important;
-    }
-
-    .hero h1 {
-        font-size: 1.8rem !important;
-        margin-bottom: 0.3rem !important;
-    }
-
-    .hero p {
-        font-size: 0.9rem !important;
+        margin-top: -50px !important;
     }
 
     #opere {
-        margin-top: 1rem !important;
+        margin-top: 2rem !important;
     }
 }
 
 /* Ottimizzazione per schermi molto piccoli */
 @media (max-width: 380px) {
     nav {
-        height: 25px !important;
-        min-height: 25px !important;
+        height: 22px !important;
+        min-height: 22px !important;
     }
 
     .nav-links a {
-        font-size: 0.6rem !important;
+        font-size: 0.55rem !important;
     }
 
     .social-icon {
-        font-size: 0.8rem !important;
-    }
-
-    .hero-content h1 {
-        font-size: 1.5rem !important;
-    }
-
-    .hero-content p {
-        font-size: 0.8rem !important;
+        font-size: 0.7rem !important;
     }
 }
     </style>
