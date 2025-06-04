@@ -576,11 +576,12 @@
         background-size: contain !important;
         background-position: top center !important;
         background-repeat: no-repeat !important;
-        min-height: 100vh !important;
-        height: 100vh !important;
+        min-height: 0 !important;
+        height: auto !important;
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
-        padding-top: 4rem !important; /* Compensa la navbar fissa */
+        padding-top: 4.5rem !important; /* Spazio per la navbar fissa */
+        padding-bottom: 1.5rem !important; /* Spazio extra sotto lo sfondo */
         display: flex !important;
         align-items: flex-start !important;
         justify-content: center !important;
@@ -588,7 +589,7 @@
     .hero-content {
         transform: none !important;
         padding-bottom: 0 !important;
-        padding-top: 4rem !important; /* Regola per centrare meglio la scritta */
+        padding-top: 0 !important;
         width: 100%;
         max-width: 100vw;
         box-sizing: border-box;
@@ -598,6 +599,10 @@
         padding-top: 0 !important;
     }
     .section-title {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    .title-container {
         margin-top: 0 !important;
     }
 }
