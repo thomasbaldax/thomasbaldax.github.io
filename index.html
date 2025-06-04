@@ -185,10 +185,10 @@
         .hero {
     height: 100vh;
     background-image: url('images/hero-background.jpg');
-    background-size: contain
+    background-size: cover; /* COPRE TUTTO su desktop */
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: transparent; /* Rimuove il colore di sfondo */
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -573,7 +573,7 @@
         padding: 0 0.1rem;
     }
     .hero {
-        background-size: contain !important;
+        background-size: contain !important; /* Mostra tutta l'immagine su mobile */
         background-position: top center !important;
         background-repeat: no-repeat !important;
         min-height: 100vh !important;
