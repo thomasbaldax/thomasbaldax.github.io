@@ -253,9 +253,10 @@
 
         /* Sections */
         section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
         }
 
         .title-container {
@@ -521,128 +522,30 @@
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            /* Stile navbar minimal */
-    nav {
+            nav {
         padding: 0;
         height: auto;
         min-height: 35px;
-        margin-bottom: 0; /* aggiunto */
-    }
-
-    .nav-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 1rem;
-        max-width: 100%;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 0.8rem;
-        margin: 0;
-        padding: 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-    }
-
-    .nav-links::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
-
-    .nav-links li {
-        margin: 0;
-        white-space: nowrap;
-    }
-
-    .nav-links a {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.4rem;
-        background: none;
-        color: white;
-        text-decoration: none;
-    }
-
-    .social-header {
-        display: flex;
-        gap: 0.5rem;
-        margin-left: 0.5rem;
-    }
-
-    .social-icon {
-        font-size: 0.9rem;
-        padding: 0;
+        margin-bottom: 0;
     }
 
     .hero {
         height: calc(100vh - 35px);
-        background-size: contain;
+        background-size: cover; /* Cambia da contain a cover */
         background-position: center center;
         background-repeat: no-repeat;
         background-color: transparent;
-        margin-top: 35px;
-        padding: 0;
+        margin-top: 0 !important; /* Elimina spazio sopra */
+        padding: 0 !important;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
     }
 
-    .hero-content {
-        background: transparent; /* Rimosso lo sfondo scuro */
-        width: 100%;
-        padding: 1rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        backdrop-filter: none; /* Rimosso l'effetto blur */
-    }
-
-    .hero h1 {
-        font-size: 2rem; /* Ridotta la dimensione del titolo */
-        margin-bottom: 0.3rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    }
-
-    .hero p {
-        font-size: 1rem; /* Ridotta la dimensione del sottotitolo */
-        margin-bottom: 0.5rem;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    }
-
-    /* Sistemazione sezione opere */
     #opere {
+        margin-top: 0 !important;
         padding-top: 0 !important;
-        margin-top: 0 !important;
-    }
-
-    .section-title {
-        margin-top: 0 !important;
-    }
-
-    .title-container {
-        margin-top: 0 !important;
-    }
-
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    section.hero,
-    #home.hero {
-        padding: 0 !important;
-        margin: 0 !important;
-        min-height: calc(100vh - 35px);
-    }
-
-    section {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
     }
 }
 
