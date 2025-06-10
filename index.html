@@ -393,6 +393,84 @@
 }
 
         @media (max-width: 600px) {
+  .hero {
+    min-height: unset;
+    height: auto;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    overflow: visible;
+    padding-top: 4.5rem !important;
+    padding-bottom: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .hero-inner {
+    max-width: 100vw;
+    width: 100vw;
+    height: auto;
+    min-height: unset;
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+  }
+  .hero-content {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+    margin: 0;
+    font-size: 1rem;
+  }
+  .artist-title {
+    font-size: 2.1rem;
+    word-break: break-word;
+    line-height: 1.1;
+    text-align: center;
+  }
+  .subtitle-centered {
+    font-size: 1.1rem;
+    word-break: break-word;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .biografia-box {
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    padding: 1.2rem 0.5rem 2rem 0.5rem;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    background: none;
+    color: #222;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  .biografia-content {
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
     .hero-content {
         position: static;
         top: auto;
@@ -1378,17 +1456,6 @@
     </footer>
 
     <script>
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const mobileNav = document.getElementById('mobileNav');
-            mobileNav.classList.toggle('active');
-        }
-
-        function closeMobileMenu() {
-            const mobileNav = document.getElementById('mobileNav');
-            mobileNav.classList.remove('active');
-        }
-
         // Load images function - modify these paths when you upload your images
         function loadImages() {
             // IMPORTANTE: Sostituisci questi percorsi con i tuoi file reali
@@ -1401,7 +1468,7 @@
                 'artwork3': 'images/volpe-nove-code.jpg',
                 'artwork4': 'images/studio-ritratto.jpg',
                 'artwork5': 'images/mare.jpg',
-                'artwork6': 'images/Ritratto.jpg',
+                'artwork6': 'images/ritratto.jpg',
                 'artwork7': 'images/cavalluccio.jpg',
                 'artwork8': 'images/fumetto.jpg',
                 'artwork9': 'images/fumetto2.jpg',
@@ -1472,176 +1539,150 @@
             }
         });
 
-        // Smooth scroll animation observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Initialize everything when DOM is loaded
+        // Animazione fade-in per le sezioni con la classe .fade-in
         document.addEventListener('DOMContentLoaded', function() {
             loadImages();
-            
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-
-        // Artwork click to enlarge and scroll like a book
-        document.addEventListener('click', function(e) {
-            const artworks = Array.from(document.querySelectorAll('.gallery .artwork img'));
-            const clickedArtwork = e.target.closest('.artwork');
-            if (clickedArtwork) {
-                const img = clickedArtwork.querySelector('img');
-                if (img) {
-                    let currentIndex = artworks.indexOf(img);
-
-                    // Modal creation
-                    const modal = document.createElement('div');
-                    modal.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0,0,0,0.9);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 10000;
-                    `;
-
-                    // Image element
-                    const enlargedImg = document.createElement('img');
-                    enlargedImg.src = img.src;
-                    enlargedImg.style.cssText = `
-                        max-width: 90%;
-                        max-height: 90%;
-                        object-fit: contain;
-                        border-radius: 10px;
-                        box-shadow: 0 0 40px #000;
-                    `;
-
-                    // Prev button
-                    const prevBtn = document.createElement('button');
-                    prevBtn.innerHTML = '&#8592;';
-                    prevBtn.className = 'modal-arrow';
-                    prevBtn.style.cssText = `
-                        position: absolute;
-                        left: 30px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        font-size: 2.5rem;
-                        background: none;
-                        border: none;
-                        color: #fff;
-                        cursor: pointer;
-                        z-index: 10001;
-                        padding: 0 10px;
-                    `;
-
-                    // Next button
-                    const nextBtn = document.createElement('button');
-                    nextBtn.innerHTML = '&#8594;';
-                    nextBtn.className = 'modal-arrow';
-                    nextBtn.style.cssText = `
-                        position: absolute;
-                        right: 30px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        font-size: 2.5rem;
-                        background: none;
-                        border: none;
-                        color: #fff;
-                        cursor: pointer;
-                        z-index: 10001;
-                        padding: 0 10px;
-                    `;
-
-                    // Funzione per aggiornare l'immagine
-                    function showImage(index) {
-                        if (index >= 0 && index < artworks.length) {
-                            enlargedImg.src = artworks[index].src;
-                            currentIndex = index;
-                        }
+            const fadeEls = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
-
-                    prevBtn.onclick = function(e) {
-                        e.stopPropagation();
-                        showImage((currentIndex - 1 + artworks.length) % artworks.length);
-                    };
-
-                    nextBtn.onclick = function(e) {
-                        e.stopPropagation();
-                        showImage((currentIndex + 1) % artworks.length);
-                    };
-
-                    modal.appendChild(prevBtn);
-                    modal.appendChild(enlargedImg);
-                    modal.appendChild(nextBtn);
-                    document.body.appendChild(modal);
-
-                    // Chiudi il modal cliccando fuori dall'immagine
-                    modal.addEventListener('click', function(e) {
-                        if (e.target === modal) {
-                            document.body.removeChild(modal);
-                        }
-                    });
-
-                    // Navigazione con frecce tastiera
-                    document.addEventListener('keydown', function handler(ev) {
-                        if (!document.body.contains(modal)) {
-                            document.removeEventListener('keydown', handler);
-                            return;
-                        }
-                        if (ev.key === 'ArrowLeft') prevBtn.onclick(ev);
-                        if (ev.key === 'ArrowRight') nextBtn.onclick(ev);
-                        if (ev.key === 'Escape') {
-                            document.body.removeChild(modal);
-                            document.removeEventListener('keydown', handler);
-                        }
-                    });
-
-                    let touchStartX = null;
-modal.addEventListener('touchstart', function(e) {
-    if (e.touches.length === 1) {
-        touchStartX = e.touches[0].clientX;
-    }
-});
-modal.addEventListener('touchend', function(e) {
-    if (touchStartX !== null && e.changedTouches.length === 1) {
-        let touchEndX = e.changedTouches[0].clientX;
-        let diff = touchEndX - touchStartX;
-        if (Math.abs(diff) > 50) { // soglia swipe
-            if (diff > 0) {
-                prevBtn.onclick(e);
-            } else {
-                nextBtn.onclick(e);
-            }
-        }
-        touchStartX = null;
-    }
-});
-                }
-            }
+                });
+            }, { threshold: 0.1 });
+            fadeEls.forEach(el => observer.observe(el));
         });
 
-        // Close mobile menu when clicking outside
+        // Galleria: click per ingrandire immagini
         document.addEventListener('click', function(e) {
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            
-            if (!mobileNav.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileNav.classList.remove('active');
+            const img = e.target;
+            if (img.tagName === 'IMG' && img.parentElement.classList.contains('artwork')) {
+                const artworks = Array.from(document.querySelectorAll('.gallery .artwork img'));
+                let currentIndex = artworks.indexOf(img);
+
+                // Crea il modal
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0; left: 0; width: 100vw; height: 100vh;
+                    background: rgba(0,0,0,0.92);
+                    display: flex; align-items: center; justify-content: center;
+                    z-index: 10000;
+                `;
+
+                // Immagine ingrandita
+                const enlargedImg = document.createElement('img');
+                enlargedImg.src = img.src;
+                enlargedImg.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                    border-radius: 10px;
+                    box-shadow: 0 0 40px #000;
+                `;
+
+                // Pulsante precedente
+                const prevBtn = document.createElement('button');
+                prevBtn.innerHTML = '&#8592;';
+                prevBtn.className = 'modal-arrow';
+                prevBtn.style.cssText = `
+                    position: absolute;
+                    left: 30px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 2.5rem;
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    cursor: pointer;
+                    z-index: 10001;
+                    padding: 0 10px;
+                `;
+
+                // Pulsante successivo
+                const nextBtn = document.createElement('button');
+                nextBtn.innerHTML = '&#8594;';
+                nextBtn.className = 'modal-arrow';
+                nextBtn.style.cssText = `
+                    position: absolute;
+                    right: 30px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 2.5rem;
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    cursor: pointer;
+                    z-index: 10001;
+                    padding: 0 10px;
+                `;
+
+                function showImage(index) {
+                    if (index >= 0 && index < artworks.length) {
+                        enlargedImg.src = artworks[index].src;
+                        currentIndex = index;
+                    }
+                }
+
+                prevBtn.onclick = function(e) {
+                    e.stopPropagation();
+                    showImage((currentIndex - 1 + artworks.length) % artworks.length);
+                };
+
+                nextBtn.onclick = function(e) {
+                    e.stopPropagation();
+                    showImage((currentIndex + 1) % artworks.length);
+                };
+
+                modal.appendChild(prevBtn);
+                modal.appendChild(enlargedImg);
+                modal.appendChild(nextBtn);
+                document.body.appendChild(modal);
+
+                // Chiudi il modal cliccando fuori dall'immagine
+                modal.addEventListener('click', function(ev) {
+                    if (ev.target === modal) {
+                        document.body.removeChild(modal);
+                    }
+                });
+
+                // Navigazione con tastiera
+                function keyHandler(ev) {
+                    if (!document.body.contains(modal)) {
+                        document.removeEventListener('keydown', keyHandler);
+                        return;
+                    }
+                    if (ev.key === 'ArrowLeft') prevBtn.onclick(ev);
+                    if (ev.key === 'ArrowRight') nextBtn.onclick(ev);
+                    if (ev.key === 'Escape') {
+                        document.body.removeChild(modal);
+                        document.removeEventListener('keydown', keyHandler);
+                    }
+                }
+                document.addEventListener('keydown', keyHandler);
+
+                // Swipe touch
+                let touchStartX = null;
+                modal.addEventListener('touchstart', function(ev) {
+                    if (ev.touches.length === 1) {
+                        touchStartX = ev.touches[0].clientX;
+                    }
+                });
+                modal.addEventListener('touchend', function(ev) {
+                    if (touchStartX !== null && ev.changedTouches.length === 1) {
+                        let touchEndX = ev.changedTouches[0].clientX;
+                        let diff = touchEndX - touchStartX;
+                        if (Math.abs(diff) > 50) {
+                            if (diff > 0) {
+                                prevBtn.onclick(ev);
+                            } else {
+                                nextBtn.onclick(ev);
+                            }
+                        }
+                        touchStartX = null;
+                    }
+                });
             }
         });
     </script>
