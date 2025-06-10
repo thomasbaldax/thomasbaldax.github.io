@@ -393,31 +393,45 @@
 }
 
         @media (max-width: 600px) {
-    .hero {
-        min-height: 80vh;
-        padding: 0;
-    }
-    .hero-inner {
-        padding: 1.2rem 0.5rem;
-    }
-    .artist-title {
-        font-size: 2.2rem;
-    }
-    .subtitle-centered {
-        font-size: 1.2rem;
-    }
-    .biografia-box, .biografia-content {
-        font-size: 0.98rem;
-        padding: 1.2rem 0.5rem;
+    .hero-content {
+        position: static;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100vw;
+        min-width: 0;
         max-width: 100vw;
-        margin-right: 0;
+        align-items: center;
+        text-align: center;
+        padding: 1.2rem 0.5rem;
     }
-    .section-title,
     .artist-title {
-        font-size: 2rem;
+        font-size: 2.1rem;
+        word-break: break-word;
+        line-height: 1.1;
     }
     .subtitle-centered {
         font-size: 1.1rem;
+        word-break: break-word;
+        line-height: 1.2;
+    }
+    .biografia-box {
+        position: static;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        padding: 1.2rem 0.5rem;
+        margin: 0 auto 2rem auto;
+        text-align: center;
+    }
+    .biografia-content {
+        padding: 0;
+        margin: 0;
+        max-width: 100vw;
+        font-size: 1rem;
     }
 }
 
