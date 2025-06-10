@@ -302,46 +302,42 @@
     text-align: left;
 }
 @media (max-width: 900px) {
-    .hero-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        min-height: unset;
-        height: auto;
-        padding: 2rem 1rem 2rem 1rem;
-        gap: 2rem;
-    }
-    .hero-content,
-    .biografia-box {
-        position: static;
-        left: unset;
-        right: unset;
-        top: unset;
-        bottom: unset;
-        max-width: 100%;
-        width: 100%;
-        margin: 0 auto;
-        transform: none;
-        padding: 0;
-    }
-    .hero-content {
-        align-items: center;
-        text-align: center;
-    }
-    .artist-title,
-    .subtitle-centered {
-        text-align: center !important;
-        width: 100%;
-    }
-    .biografia-box {
-        background: none;
-        color: #222;
-        padding: 1.5rem 0.5rem;
-        min-width: 0;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: unset;
+    height: auto;
+    padding: 2rem 1rem 2rem 1rem;
+    gap: 2rem;
+  }
+  .hero-content,
+  .biografia-box {
+    position: static !important;
+    left: unset !important;
+    right: unset !important;
+    top: unset !important;
+    bottom: unset !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    margin: 0 auto 1.5rem auto !important;
+    transform: none !important;
+    padding: 1.2rem 0.5rem !important;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    border-radius: 16px;
+    text-align: center !important;
+    color: #222 !important;
+  }
+  .artist-title,
+  .subtitle-centered {
+    text-align: center !important;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 1.1;
+    word-break: break-word;
+  }
 }
 @media (max-width: 768px) {
     .nav-links a {
