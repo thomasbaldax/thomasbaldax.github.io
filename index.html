@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thomas Baldax - Illustratore</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="images/favicon-128.png">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
     
     <!-- Meta tags SEO -->
     <meta name="description" content="Thomas Baldax - Illustratore digitale specializzato in character design, concept art e illustrazioni personalizzate. Portfolio e servizi di illustrazione professionale.">
@@ -183,67 +187,290 @@
         }
 
         .hero {
-    height: 100vh;
-    background-image: url('images/hero-background.jpg');
-    background-size: cover; /* COPRE TUTTO su desktop */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: transparent;
+    position: relative;
+    min-height: 100vh;
+    background: url('images/relax.jpg') center center / contain no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    position: relative;
+    z-index: 1;
     overflow: hidden;
 }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,0 1000,1000"/></svg>');
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-       .hero-content {
-       z-index: 2;
-       max-width: 400px;
-       color: rgb(255, 255, 255);
-       padding: 1rem;
-       transform: translateY(-140px); /* Alzata da -93px a -140px */
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 22vw;
+    height: 100%;
+    background: url('images/relax.jpg') center center / cover no-repeat;
+    filter: blur(18px) brightness(0.7) saturate(1.2);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
 }
-
-        .hero h1,
-.hero p {
-    opacity: 0;
-    transform: translateY(40px);
-    animation: heroFadeInUp 2s cubic-bezier(.4,0,.2,1) forwards;
+.hero::before {
+    left: 0;
+    background-position: left center;
+    /* Optional: gradient fade */
+    mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
-
-.hero h1 {
-    animation-delay: 0.5s;
+.hero::after {
+    right: 0;
+    background-position: right center;
+    mask-image: linear-gradient(to left, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%);
 }
-
-.hero p {
-    animation-delay: 1.2s;
+.hero-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+    background: none;
+    min-height: 80vh;
+    height: 100vh;
+    /* Rimuovi display: flex, flex-direction, align-items, justify-content, gap, padding */
 }
-
-@keyframes heroFadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
+.hero-content {
+    position: absolute;
+    top: 53%;
+    left: -5vw;
+    transform: translateY(-50%);
+    width: 28vw;
+    min-width: 200px;
+    max-width: 400px;
+    background: none;
+    padding: 0;
+    z-index: 3;
+    color: #fff;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0;
+}
+.artist-title {
+    font-size: 4.2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #fff;
+    background: linear-gradient(90deg, #ff6b6b 20%, #fff 60%, #4ecdc4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: left;
+    line-height: 1.1;
+    filter: drop-shadow(0 2px 16px rgba(0,0,0,0.25));
+}
+.subtitle-centered {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin-top: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.biografia-box {
+    position: absolute;
+    top: 50%;
+    right: 4vw;
+    transform: translateY(-50%);
+    width: 38vw;
+    min-width: 320px;
+    max-width: 520px;
+    background: none;
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+    z-index: 3;
+    color: #222;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.biografia-content {
+    background: none;
+    padding: 3rem 3rem 3rem 4rem;
+    max-width: 500px;
+    margin-right: 7vw;
+    text-align: left;
+}
+@media (max-width: 900px) {
+    .hero-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        min-height: unset;
+        height: auto;
+        padding: 2rem 1rem 2rem 1rem;
+        gap: 2rem;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .hero-content,
+    .biografia-box {
+        position: static;
+        left: unset;
+        right: unset;
+        top: unset;
+        bottom: unset;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        transform: none;
+        padding: 0;
+    }
+    .hero-content {
+        align-items: center;
+        text-align: center;
+    }
+    .artist-title,
+    .subtitle-centered {
+        text-align: center !important;
+        width: 100%;
+    }
+    .biografia-box {
+        background: none;
+        color: #222;
+        padding: 1.5rem 0.5rem;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+@media (max-width: 768px) {
+    .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.12rem 0.25rem;
+    }
+    .nav-links li {
+        padding: 0.02rem 0.08rem;
+    }
+    .social-icon {
+        font-size: 0.85rem;
+    }
+    .nav-container {
+        padding: 0 0.1rem;
+    }
+    .hero {
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        height: 100vh !important;
+        min-height: 0 !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        padding-top: 4.5rem !important; /* Spazio per la navbar fissa */
+        padding-bottom: 1.5rem !important; /* Spazio extra sotto lo sfondo */
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+    }
+    .hero-content {
+        transform: none !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    #opere {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    .section-title {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    .title-container {
+        margin-top: 0 !important;
+    }
+}
+
+        @media (max-width: 600px) {
+    .hero {
+        min-height: 80vh;
+        padding: 0;
+    }
+    .hero-inner {
+        padding: 1.2rem 0.5rem;
+    }
+    .artist-title {
+        font-size: 2.2rem;
+    }
+    .subtitle-centered {
+        font-size: 1.2rem;
+    }
+    .biografia-box, .biografia-content {
+        font-size: 0.98rem;
+        padding: 1.2rem 0.5rem;
+        max-width: 100vw;
+        margin-right: 0;
+    }
+    .section-title,
+    .artist-title {
+        font-size: 2rem;
+    }
+    .subtitle-centered {
+        font-size: 1.1rem;
+    }
+}
+
+/* --- GALLERY: stile fluido come index2.html, sempre a griglia adattiva --- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding-bottom: 2rem;
+    scroll-snap-type: none;
+}
+
+.artwork {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #f8f9fa;
+}
+
+.artwork img,
+.placeholder-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Rimuovi o commenta tutte le media query che modificano la gallery */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .artwork img,
+    .placeholder-image {
+        height: 200px;
+    }
+}
+@media (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+}
+@media (max-width: 900px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
     }
 }
 
@@ -336,16 +563,14 @@
 
         /* Gallery */
         .gallery {
-            display: flex;
-            flex-direction: row;
-            gap: 2rem;
-            overflow-x: auto;
-            padding-bottom: 2rem;
-            scroll-snap-type: x mandatory;
-        }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    padding-bottom: 2rem;
+    scroll-snap-type: none;
+}
 
         .artwork {
-            min-width: 320px;
             flex: 0 0 auto;
             scroll-snap-align: start;
             position: relative;
@@ -557,6 +782,14 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+        .subtitle-centered {
+    text-align: left;
+    width: 100%;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+}
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .nav-links a {
@@ -622,6 +855,63 @@
         padding: 0 0.05rem;
     }
 }
+.biografia-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 60vh;
+    background: none;
+    margin: 0 0 3rem 0;
+}
+.biografia-content {
+    background: none;
+    padding: 3rem 3rem 3rem 4rem;
+    max-width: 500px;
+    margin-right: 7vw;
+    text-align: left;
+}
+.biografia-content .section-title {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.biografia-box {
+    position: absolute;
+    top: 50%;
+    right: 4vw;
+    transform: translateY(-50%);
+    width: 38vw;
+    min-width: 320px;
+    max-width: 520px;
+    background: none;
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+    z-index: 3;
+    color: #222;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .biografia-box {
+        /* width: 5vw;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        min-width: 0;
+        padding: 1.2rem;
+        background: none; */
+    }
+}
+.gradient-title {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #764ba2, #667eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 300% 300%;
+    animation: gradient-shift 8s ease infinite;
+}
     </style>
 </head>
 <body>
@@ -631,7 +921,6 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#opere">Le Mie Opere</a></li>
-                <li><a href="#about">Chi Sono</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
             <div class="social-header">
@@ -647,11 +936,24 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>THOMAS BALDAX</h1>
-            <p>Illustratore • Artista</p>
-        </div>
-    </section>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="artist-title gradient-title">THOMAS BALDAX</h1>
+      <p class="subtitle-centered gradient-title">Illustratore • Artista</p>
+      <img src="images/favicon.png" alt="Favicon Thomas Baldax" style="display:block;margin:1.2rem auto 0 auto;width:64px;height:64px;" />
+    </div>
+  </div>
+  <div class="biografia-box">
+    <h2 class="section-title" style="text-align:left;">BIOGRAFIA</h2>
+    <p>
+      Ciao, sono Thomas Baldax, un artista emergente appassionato di illustrazione digitale e design creativo. 
+      Il mio lavoro spazia dai ritratti di famiglia in stile cartoon alle creature fantastiche, 
+      sempre con un tocco personale e moderno. Amo sperimentare con colori vivaci e stili diversi, 
+      creando opere che raccontano storie e trasmettono emozioni. Ogni disegno è per me un'opportunità 
+      di esplorare nuove tecniche e di condividere la mia visione artistica con il mondo.
+    </p>
+  </div>
+</section>
 
     <!-- Gallery Section -->
     <section id="opere">
@@ -982,26 +1284,41 @@
                     </div>
                 </div>
             </div>
+            <div class="artwork fade-in">
+                <div class="placeholder-image" id="artwork30">
+                    🌳<br>Natura<br><small>Carica: natura.jpg</small>
+                </div>
+                <div class="artwork-overlay">
+                    <div class="artwork-info">
+                        <h3>Natura</h3>
+                        <p>Paesaggio naturale rilassante</p>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork fade-in">
+                <div class="placeholder-image" id="artwork31">
+                    🌲<br>Bosco<br><small>Carica: bosco.jpg</small>
+                </div>
+                <div class="artwork-overlay">
+                    <div class="artwork-info">
+                        <h3>Bosco</h3>
+                        <p>Foresta verde e rigogliosa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork fade-in">
+                <div class="placeholder-image" id="artwork32">
+                    🌸<br>Fiori<br><small>Carica: fiori.jpg</small>
+                </div>
+                <div class="artwork-overlay">
+                    <div class="artwork-info">
+                        <h3>Fiori</h3>
+                        <p>Combo Donna Più Fiori</p>
+                    </div>
+                </div>
+            </div>
         </div> <!-- chiusura del div .gallery -->
-        <div class="gallery-instruction fade-in">
-            ← Scorri a destra per vedere tutte le immagini →
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title fade-in">Chi Sono</h2>
-        <div class="about fade-in">
-            <p>
-                Ciao, sono Thomas Baldax, un artista emergente appassionato di illustrazione digitale e design creativo. 
-                Il mio lavoro spazia dai ritratti di famiglia in stile cartoon alle creature fantastiche, 
-                sempre con un tocco personale e moderno. Amo sperimentare con colori vivaci e stili diversi, 
-                creando opere che raccontano storie e trasmettono emozioni. Ogni disegno è per me un'opportunità 
-                di esplorare nuove tecniche e di condividere la mia visione artistica con il mondo.
-            </p>
-        </div>
-    </section>
-
+        </section>
     <!-- Contact Section -->
     <section id="contatti">
         <h2 class="section-title fade-in">Contatti</h2>
@@ -1094,6 +1411,9 @@
                 'artwork27': 'images/luna.jpg',
                 'artwork28': 'images/me.jpg',
                 'artwork29': 'images/relax.jpg',
+                'artwork30': 'images/natura.jpg',
+                'artwork31': 'images/bosco.jpg',
+                'artwork32': 'images/fiori.jpg',
                 'qr-code': 'images/qr-instagram.png',
                 'gmail-icon': 'images/gmail-icon.png',
                 'paypal-icon': 'images/paypal-icon.png'
