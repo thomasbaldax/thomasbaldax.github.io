@@ -302,46 +302,48 @@
     text-align: left;
 }
 @media (max-width: 900px) {
-    .hero-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        min-height: unset;
-        height: auto;
-        padding: 2rem 1rem 2rem 1rem;
-        gap: 2rem;
-    }
-    .hero-content,
-    .biografia-box {
-        position: static;
-        left: unset;
-        right: unset;
-        top: unset;
-        bottom: unset;
-        max-width: 100%;
-        width: 100%;
-        margin: 0 auto;
-        transform: none;
-        padding: 0;
-    }
-    .hero-content {
-        align-items: center;
-        text-align: center;
-    }
-    .artist-title,
-    .subtitle-centered {
-        text-align: center !important;
-        width: 100%;
-    }
-    .biografia-box {
-        background: none;
-        color: #222;
-        padding: 1.5rem 0.5rem;
-        min-width: 0;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: unset;
+    height: auto;
+    padding: 2rem 1rem 2rem 1rem;
+    gap: 2rem;
+  }
+  .hero-content,
+  .biografia-box {
+    position: static !important;
+    left: unset !important;
+    right: unset !important;
+    top: unset !important;
+    bottom: unset !important;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: none !important;
+    padding: 0;
+    z-index: auto !important;
+  }
+  .hero-content {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .artist-title,
+  .subtitle-centered {
+    text-align: center !important;
+    width: 100%;
+  }
+  .biografia-box {
+    background: none;
+    color: #222;
+    padding: 1.5rem 0.5rem;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center !important;
+  }
 }
 @media (max-width: 768px) {
     .nav-links a {
