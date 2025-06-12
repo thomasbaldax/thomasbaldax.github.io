@@ -409,6 +409,15 @@
 }
 
         @media (max-width: 600px) {
+  .hero-content {
+    background: rgba(0,0,0,0.75) !important;
+    border-radius: 18px;
+    padding: 1.2rem 0.5rem !important;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  }
+}
+@media (max-width: 600px) {
   .hero {
     flex-direction: column;
     align-items: stretch;
@@ -459,10 +468,10 @@
     margin-bottom: 1rem;
   }
   .biografia-box {
-    color: #fff !important;    /* Testo bianco */
-    background: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    background: rgba(0,0,0,0.4) !important;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 1.5rem 1rem !important;
     margin-bottom: 2rem !important;
   }
   .biografia-box p {
@@ -490,7 +499,7 @@
 /* ...existing code... */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     padding-bottom: 2rem;
     scroll-snap-type: none;
@@ -633,7 +642,7 @@
         /* Gallery */
         .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     padding-bottom: 2rem;
     scroll-snap-type: none;
@@ -1029,7 +1038,7 @@
     <div class="hero-content">
       <h1 class="artist-title gradient-title">THOMAS BALDAX</h1>
       <p class="subtitle-centered gradient-title">Illustratore • Artista</p>
-      <img src="images/favicon.png" alt="Favicon Thomas Baldax" class="favicon-hero" />
+      <img src="images/favicon.png" alt="Favicon Thomas Baldax" class="favicon-hero" loading="lazy" />
     </div>
   </div>
   <div class="biografia-box">
@@ -1049,7 +1058,7 @@
         <h2 class="section-title fade-in">Le Mie Opere</h2>
         <div class="title-container fade-in">
             <a href="https://www.instagram.com/thomas_baldax/" class="instagram-link" target="_blank">
-                <img src="images/instagram-logo.png" alt="Instagram Thomas Baldax">
+                <img src="images/instagram-logo.png" alt="Instagram Thomas Baldax" loading="lazy" />
                 <span>Seguimi su Instagram</span>
             </a>
         </div>
@@ -1380,7 +1389,7 @@
                 <div class="artwork-overlay">
                     <div class="artwork-info">
                         <h3>Natura</h3>
-                        <p>Paesaggio naturale rilassante</p>
+                        <p>Un ragazzo osserva un fascio di luce scendere dal cielo in un paesaggio verde e sereno, circondato da papaveri rossi. Atmosfera di meraviglia.</p>
                     </div>
                 </div>
             </div>
@@ -1391,7 +1400,7 @@
                 <div class="artwork-overlay">
                     <div class="artwork-info">
                         <h3>Bosco</h3>
-                        <p>Foresta verde e rigogliosa</p>
+                        <p>I due personaggi esplorano un bosco misterioso, avvolto nella nebbia. Guardano verso l’alto, come attratti da qualcosa di straordinario.</p>
                     </div>
                 </div>
             </div>
@@ -1402,10 +1411,55 @@
                 <div class="artwork-overlay">
                     <div class="artwork-info">
                         <h3>Fiori</h3>
-                        <p>Combo Donna Più Fiori</p>
+                        <p>Una ragazza elegante danza tra petali rossi, con un ventaglio in mano e un’aria serena. Lo sfondo sfumato evoca leggerezza e sogno.</p>
                     </div>
                 </div>
             </div>
+            <!-- Aggiungi queste card PRIMA della chiusura del div .gallery -->
+<div class="artwork fade-in">
+    <div class="placeholder-image" id="artwork33">
+        💧<br>Gallegio Blu<br><small>Carica: GallegioBlu.jpg</small>
+    </div>
+    <div class="artwork-overlay">
+        <div class="artwork-info">
+            <h3>Gallegio Blu</h3>
+            <p>Persona che galleggia serenamente nell'acqua blu, vista dall'alto, con increspature e bolle.</p>
+        </div>
+    </div>
+</div>
+<div class="artwork fade-in">
+    <div class="placeholder-image" id="artwork34">
+        🎈<br>Saluto Festoso<br><small>Carica: SalutoFestoso.jpg</small>
+    </div>
+    <div class="artwork-overlay">
+        <div class="artwork-info">
+            <h3>Saluto Festoso</h3>
+            <p>Ragazza dai capelli rossi che saluta, con palloncini a forma di cuore rossi e rosa sullo sfondo.</p>
+        </div>
+    </div>
+</div>
+<div class="artwork fade-in">
+    <div class="placeholder-image" id="artwork35">
+        👑<br>Guerriera Eterea<br><small>Carica: GuerrieraEterea.jpg</small>
+    </div>
+    <div class="artwork-overlay">
+        <div class="artwork-info">
+            <h3>Guerriera Eterea</h3>
+            <p>Figura femminile eterea con lunghi capelli scuri e una corona, in un bosco notturno con una citazione.</p>
+        </div>
+    </div>
+</div>
+<div class="artwork fade-in">
+    <div class="placeholder-image" id="artwork36">
+        🪻<br>Giardino Incantato<br><small>Carica: GiardinoIncantato.jpg</small>
+    </div>
+    <div class="artwork-overlay">
+        <div class="artwork-info">
+            <h3>Giardino Incantato</h3>
+            <p>Illustrazione magica di un giardino fatato con fiori viola e piccole figure eteree.</p>
+        </div>
+    </div>
+</div>
         </div> <!-- chiusura del div .gallery -->
         </section>
     <!-- Contact Section -->
@@ -1503,6 +1557,10 @@
                 'artwork30': 'images/natura.jpg',
                 'artwork31': 'images/bosco.jpg',
                 'artwork32': 'images/fiori.jpg',
+                'artwork33': 'images/GallegioBlu.jpg',
+                'artwork34': 'images/SalutoFestoso.jpg',
+                'artwork35': 'images/GuerrieraEterea.jpg',
+                'artwork36': 'images/GiardinoIncantato.jpg',
                 'qr-code': 'images/qr-instagram.png',
                 'gmail-icon': 'images/gmail-icon.png',
                 'paypal-icon': 'images/paypal-icon.png'
@@ -1515,8 +1573,8 @@
                     // Create img element to test if image exists
                     const img = new Image();
                     img.onload = function() {
-                        // Image exists, replace placeholder
-                        element.outerHTML = `<img id="${id}" src="${src}" alt="${element.textContent}" />`;
+    // Image exists, replace placeholder con lazy loading
+    element.outerHTML = `<img id="${id}" src="${src}" alt="${element.textContent}" loading="lazy" />`;
                     };
                     img.onerror = function() {
                         // Image doesn't exist, keep placeholder
@@ -1527,7 +1585,7 @@
                     // Handle QR code placeholders
                     const img = new Image();
                     img.onload = function() {
-                        element.innerHTML = `<img src="${src}" alt="QR Code" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />`;
+    element.innerHTML = `<img src="${src}" alt="QR Code" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" loading="lazy" />`;
                     };
                     img.onerror = function() {
                         console.log(`QR code image not found: ${src}`);
