@@ -438,9 +438,9 @@
     bottom: unset !important;
     max-width: 100vw !important;
     width: 100vw !important;
-    margin: 0 auto 0 auto !important;
-    transform: none !important;
-    padding: 1.2rem 0.5rem !important;
+    margin: 0 auto !important;
+    /* Cambia qui per centrare e dare spazio uguale */
+    padding: 1.2rem 1rem !important; /* spazio uguale a dx e sx */
     background: none !important;
     box-sizing: border-box;
     text-align: center !important;
@@ -459,11 +459,15 @@
     margin-bottom: 1rem;
   }
   .biografia-box {
-    background: rgba(0,0,0,0.65) !important; /* Sfondo nero leggero */
-    color: #fff !important;                  /* Testo bianco */
+    background: rgba(0,0,0,0.35) !important; /* Più trasparente su mobile */
+    color: #fff !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 24px rgba(0,0,0,0.18) !important;
-    padding: 1.2rem !important;
+    padding: 1.2rem 1rem !important; /* spazio uguale a dx e sx */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: auto !important;
+    margin-top: 12rem !important; /* Aggiungi o aumenta questo valore per abbassare la biografia */
   }
   .biografia-box p {
     color: #fff !important;
@@ -997,6 +1001,35 @@
         display: block;
     }
 }
+.biografia-header-mobile {
+  display: none;
+}
+@media (max-width: 600px) {
+  .biografia-header-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 7rem 0 0.5rem 0; /* aumentato da 1.2rem a 3.2rem */
+    text-align: center;
+    gap: 0.2rem;
+  }
+  .biografia-header-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    /* background e color ora sono gestiti da .gradient-title */
+  }
+  .biografia-header-subtitle {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.1;
+    /* color ora è gestito da .gradient-title */
+    text-shadow: none;
+  }
+}
     </style>
 </head>
 <body>
@@ -1027,6 +1060,12 @@
       <p class="subtitle-centered gradient-title">Illustratore • Artista</p>
       <img src="images/favicon.png" alt="Favicon Thomas Baldax" class="favicon-hero" />
     </div>
+    <!-- INIZIO: Scritta sopra la biografia solo su mobile -->
+    <div class="biografia-header-mobile">
+      <span class="biografia-header-title gradient-title">THOMAS BALDAX</span>
+      <span class="biografia-header-subtitle gradient-title">Illustratore • Artista</span>
+    </div>
+    <!-- FINE: Scritta sopra la biografia solo su mobile -->
   </div>
   <div class="biografia-box">
     <h2 class="section-title" style="text-align:left;">BIOGRAFIA</h2>
