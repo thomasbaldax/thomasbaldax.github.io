@@ -74,6 +74,29 @@
             padding: 0 1rem;
         }
 
+        .mobile-logo {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .mobile-logo {
+                display: block;
+                font-family: 'Montserrat', Arial, sans-serif;
+                font-size: 1.3rem;
+                font-weight: 800;
+                letter-spacing: 1px;
+                color: #fff;
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .artist-title.gradient-title {
+                display: none !important;
+            }
+        }
+
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
@@ -1173,6 +1196,10 @@
     align-items: center;
     justify-content: center;
   }
+  #opere .section-title,
+  #contatti .section-title {
+    font-size: 2.1rem !important;
+  }
 }
 .footer-custom-message {
   font-size: 1.1rem;
@@ -1187,6 +1214,10 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <span class="mobile-logo">THOMAS BALDAX</span>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#opere">Le Mie Opere</a></li>
@@ -1201,10 +1232,6 @@
                 </a>
             </div>
             <!-- INIZIO: Bottone hamburger per mobile -->
-            <div class="mobile-menu" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
-            <!-- FINE: Bottone hamburger per mobile -->
             <!-- INIZIO: Social mobile accanto hamburger -->
             <div class="mobile-header-social">
                 <a href="https://www.instagram.com/thomas_baldax/" target="_blank" class="social-icon">
@@ -1239,7 +1266,6 @@
   <div class="hero-inner">
     <div class="hero-content">
       <h1 class="artist-title gradient-title">THOMAS BALDAX</h1>
-      <p class="subtitle-centered gradient-title">Illustratore • Artista</p>
       <img src="images/favicon.png" alt="Favicon Thomas Baldax" class="favicon-hero" />
     </div>
     <!-- INIZIO: Scritta sopra la biografia solo su mobile -->
