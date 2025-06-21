@@ -272,13 +272,15 @@ letter-spacing: 3px;
 margin-bottom: 0.5rem;
 font-family: 'Montserrat', Arial, sans-serif;
 color: #fff;
-background: linear-gradient(90deg, #ff6b6b 20%, #fff 60%, #4ecdc4 100%);
+background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #764ba2, #667eea);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
 text-align: left;
 line-height: 1.1;
 filter: drop-shadow(0 2px 16px rgba(0,0,0,0.25));
+background-size: 300% 300%;
+animation: gradient-shift 8s ease infinite;
 }
 .subtitle-centered {
 font-size: 2rem;
@@ -495,7 +497,7 @@ padding: 1.2rem 1rem !important; /* spazio uguale a dx e sx */
 margin-left: auto !important;
 margin-right: auto !important;
 width: auto !important;
-margin-top: 28rem !important; /* Aggiungi o aumenta questo valore per abbassare la biografia */
+margin-top: 26rem !important; /* Ridotto per alzare la biografia */
 }
 .biografia-box p {
 color: #fff !important;
@@ -1063,10 +1065,12 @@ transition: margin 0.3s ease;
 }
 @media (max-width: 600px) {
 .favicon-hero {
-    margin: 1rem 0 0 auto;   /* Rimane a destra su mobile */
     width: 48px;
     height: 48px;
     display: block;
+    align-self: flex-end; /* Allinea a destra nel contenitore */
+    margin-top: 1rem;
+    margin-right: -1rem;   /* Annulla il padding del contenitore per toccare il bordo */
 }
 }
 .biografia-header-mobile {
