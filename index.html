@@ -9,6 +9,9 @@
 <link rel="icon" type="image/png" sizes="128x128" href="images/favicon-128.png">
 <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     
+    <!-- Preload LCP image for faster loading -->
+    <link rel="preload" href="images/relax.webp" as="image">
+    
     <!-- Meta tags SEO -->
     <meta name="description" content="Thomas Baldax - Illustratore digitale specializzato in character design, concept art e illustrazioni personalizzate. Portfolio e servizi di illustrazione professionale.">
     <meta name="keywords" content="illustratore, illustrazione digitale, character design, concept art, Thomas Baldax">
@@ -21,9 +24,11 @@
     <meta property="og:url" content="https://thomasbaldax.com">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"></noscript>
     
     <style>
         * {
@@ -1351,7 +1356,7 @@
             </div>
             <div class="artwork fade-in">
                 <div class="placeholder-image" id="artwork6">
-                    ✨<br>Design Personaggio<br><small>Carica: ritratto.webp</small>
+                    ✨<br>Design Personaggio<br><small>Carica: Ritratto.webp</small>
                 </div>
                 <div class="artwork-overlay">
                     <div class="artwork-info">
@@ -1749,19 +1754,15 @@
             mobileNav.classList.remove('active');
         }
 
-        // Load images function - modify these paths when you upload your images
+        // Load images function - optimized for performance
         function loadImages() {
-            // IMPORTANTE: Sostituisci questi percorsi con i tuoi file reali
-            // Esempio per GitHub Pages: se hai una cartella "images" nel tuo repo,
-            // usa "images/nome-file.jpg"
-            
             const images = {
                 'artwork1': 'images/ritratto-famiglia.webp',
                 'artwork2': 'images/avventure-famiglia.webp', 
                 'artwork3': 'images/volpe-nove-code.webp',
                 'artwork4': 'images/studio-ritratto.webp',
                 'artwork5': 'images/mare.webp',
-                'artwork6': 'images/ritratto.webp',
+                'artwork6': 'images/Ritratto.webp',
                 'artwork7': 'images/cavalluccio.webp',
                 'artwork8': 'images/fumetto.webp',
                 'artwork9': 'images/fumetto2.webp',
@@ -1797,31 +1798,19 @@
                 'paypal-icon': 'images/paypal-icon.webp'
             };
 
-            // Try to load each image, keep placeholder if image doesn't exist
             Object.entries(images).forEach(([id, src]) => {
                 const element = document.getElementById(id);
-                if (element && element.classList.contains('placeholder-image')) {
-                    // Create img element to test if image exists
-                    const img = new Image();
-                    img.onload = function() {
-                        // Image exists, replace placeholder
-                        element.outerHTML = `<img id="${id}" src="${src}" alt="${element.textContent}" loading="lazy" />`;
-                    };
-                    img.onerror = function() {
-                        // Image doesn't exist, keep placeholder
-                        console.log(`Image not found: ${src}`);
-                    };
+                if (!element) return;
+
+                if (element.classList.contains('placeholder-image')) {
+                    const img = document.createElement('img');
+                    img.id = id;
                     img.src = src;
-                } else if (element && element.classList.contains('qr-code')) {
-                    // Handle QR code placeholders
-                    const img = new Image();
-                    img.onload = function() {
-                        element.innerHTML = `<img src="${src}" alt="QR Code" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" />`;
-                    };
-                    img.onerror = function() {
-                        console.log(`QR code image not found: ${src}`);
-                    };
-                    img.src = src;
+                    img.alt = element.textContent.trim().replace(/<small>.*<\/small>/, '').replace(/<br>/g, ' ');
+                    img.loading = 'lazy';
+                    element.replaceWith(img);
+                } else if (element.classList.contains('qr-code')) {
+                    element.innerHTML = `<img src="${src}" alt="QR Code" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" loading="lazy" />`;
                 }
             });
         }
@@ -1860,175 +1849,184 @@
             });
         });
 
-        // Artwork click to enlarge and scroll like a book
+        // Combined and optimized event listener for clicks
         document.addEventListener('click', function(e) {
-    const artworks = Array.from(document.querySelectorAll('.gallery .artwork img'));
-    const clickedArtwork = e.target.closest('.artwork');
-    if (clickedArtwork) {
-        const img = clickedArtwork.querySelector('img');
-        if (img) {
-            let currentIndex = artworks.indexOf(img);
+            // Gallery modal logic
+            const clickedArtwork = e.target.closest('.artwork');
+            if (clickedArtwork) {
+                const img = clickedArtwork.querySelector('img');
+                if (img) {
+                    const artworks = Array.from(document.querySelectorAll('.gallery .artwork img'));
+                    let currentIndex = artworks.indexOf(img);
 
-            // Modal creation
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-            `;
+                    // Modal creation
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.9);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                    `;
 
-            // Close button (X)
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '&times;';
-            closeBtn.setAttribute('aria-label', 'Chiudi');
-            closeBtn.style.cssText = `
-                position: absolute;
-                top: 18px;
-                right: 22px;
-                font-size: 2.5rem;
-                background: none;
-                border: none;
-                color: #fff;
-                cursor: pointer;
-                z-index: 10002;
-                padding: 0 10px;
-                line-height: 1;
-                font-weight: bold;
-                transition: color 0.2s;
-            `;
-            closeBtn.onclick = function(e) {
-                e.stopPropagation();
-                document.body.removeChild(modal);
-            };
+                    // Close button (X)
+                    const closeBtn = document.createElement('button');
+                    closeBtn.innerHTML = '&times;';
+                    closeBtn.setAttribute('aria-label', 'Chiudi');
+                    closeBtn.style.cssText = `
+                        position: absolute;
+                        top: 18px;
+                        right: 22px;
+                        font-size: 2.5rem;
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        cursor: pointer;
+                        z-index: 10002;
+                        padding: 0 10px;
+                        line-height: 1;
+                        font-weight: bold;
+                        transition: color 0.2s;
+                    `;
+                    closeBtn.onclick = function(event) {
+                        event.stopPropagation();
+                        document.body.removeChild(modal);
+                    };
 
-            // Image element
-            const enlargedImg = document.createElement('img');
-            enlargedImg.src = img.src;
-            enlargedImg.style.cssText = `
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-                border-radius: 10px;
-                box-shadow: 0 0 40px #000;
-            `;
+                    // Image element
+                    const enlargedImg = document.createElement('img');
+                    enlargedImg.src = img.src;
+                    enlargedImg.style.cssText = `
+                        max-width: 90%;
+                        max-height: 90%;
+                        object-fit: contain;
+                        border-radius: 10px;
+                        box-shadow: 0 0 40px #000;
+                    `;
 
-            // Prev button
-            const prevBtn = document.createElement('button');
-            prevBtn.innerHTML = '&#8592;';
-            prevBtn.className = 'modal-arrow';
-            prevBtn.style.cssText = `
-                position: absolute;
-                left: 30px;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 2.5rem;
-                background: none;
-                border: none;
-                color: #fff;
-                cursor: pointer;
-                z-index: 10001;
-                padding: 0 10px;
-            `;
+                    // Prev button
+                    const prevBtn = document.createElement('button');
+                    prevBtn.innerHTML = '&#8592;';
+                    prevBtn.className = 'modal-arrow';
+                    prevBtn.style.cssText = `
+                        position: absolute;
+                        left: 30px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 2.5rem;
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        cursor: pointer;
+                        z-index: 10001;
+                        padding: 0 10px;
+                    `;
 
-            // Next button
-            const nextBtn = document.createElement('button');
-            nextBtn.innerHTML = '&#8594;';
-            nextBtn.className = 'modal-arrow';
-            nextBtn.style.cssText = `
-                position: absolute;
-                right: 30px;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 2.5rem;
-                background: none;
-                border: none;
-                color: #fff;
-                cursor: pointer;
-                z-index: 10001;
-                padding: 0 10px;
-            `;
+                    // Next button
+                    const nextBtn = document.createElement('button');
+                    nextBtn.innerHTML = '&#8594;';
+                    nextBtn.className = 'modal-arrow';
+                    nextBtn.style.cssText = `
+                        position: absolute;
+                        right: 30px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 2.5rem;
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        cursor: pointer;
+                        z-index: 10001;
+                        padding: 0 10px;
+                    `;
 
-            function showImage(index) {
-                if (index >= 0 && index < artworks.length) {
-                    enlargedImg.src = artworks[index].src;
-                    currentIndex = index;
-                }
-            }
-
-            prevBtn.onclick = function(e) {
-                e.stopPropagation();
-                showImage((currentIndex - 1 + artworks.length) % artworks.length);
-            };
-
-            nextBtn.onclick = function(e) {
-                e.stopPropagation();
-                showImage((currentIndex + 1) % artworks.length);
-            };
-
-            modal.appendChild(closeBtn);
-            modal.appendChild(prevBtn);
-            modal.appendChild(enlargedImg);
-            modal.appendChild(nextBtn);
-            document.body.appendChild(modal);
-
-            // Chiudi il modal cliccando fuori dall'immagine
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    document.body.removeChild(modal);
-                }
-            });
-
-            // Navigazione con frecce tastiera
-            document.addEventListener('keydown', function handler(ev) {
-                if (!document.body.contains(modal)) {
-                    document.removeEventListener('keydown', handler);
-                    return;
-                }
-                if (ev.key === 'ArrowLeft') prevBtn.onclick(ev);
-                if (ev.key === 'ArrowRight') nextBtn.onclick(ev);
-                if (ev.key === 'Escape') {
-                    document.body.removeChild(modal);
-                    document.removeEventListener('keydown', handler);
-                }
-            });
-
-            let touchStartX = null;
-            modal.addEventListener('touchstart', function(e) {
-                if (e.touches.length === 1) {
-                    touchStartX = e.touches[0].clientX;
-                }
-            });
-            modal.addEventListener('touchend', function(e) {
-                if (touchStartX !== null && e.changedTouches.length === 1) {
-                    let touchEndX = e.changedTouches[0].clientX;
-                    let diff = touchEndX - touchStartX;
-                    if (Math.abs(diff) > 50) {
-                        if (diff > 0) {
-                            prevBtn.onclick(e);
-                        } else {
-                            nextBtn.onclick(e);
+                    function showImage(index) {
+                        if (index >= 0 && index < artworks.length) {
+                            enlargedImg.src = artworks[index].src;
+                            currentIndex = index;
                         }
                     }
-                    touchStartX = null;
+
+                    prevBtn.onclick = function(event) {
+                        event.stopPropagation();
+                        showImage((currentIndex - 1 + artworks.length) % artworks.length);
+                    };
+
+                    nextBtn.onclick = function(event) {
+                        event.stopPropagation();
+                        showImage((currentIndex + 1) % artworks.length);
+                    };
+
+                    modal.appendChild(closeBtn);
+                    modal.appendChild(prevBtn);
+                    modal.appendChild(enlargedImg);
+                    modal.appendChild(nextBtn);
+                    document.body.appendChild(modal);
+
+                    // Close the modal by clicking outside the image
+                    modal.addEventListener('click', function(event) {
+                        if (event.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+
+                    // Keyboard navigation
+                    const keydownHandler = function(ev) {
+                        if (!document.body.contains(modal)) {
+                            document.removeEventListener('keydown', keydownHandler);
+                            return;
+                        }
+                        if (ev.key === 'ArrowLeft') prevBtn.onclick(ev);
+                        if (ev.key === 'ArrowRight') nextBtn.onclick(ev);
+                        if (ev.key === 'Escape') {
+                            document.body.removeChild(modal);
+                        }
+                    };
+                    document.addEventListener('keydown', keydownHandler);
+                    
+                    // Cleanup event listener on modal close
+                    const observer = new MutationObserver((mutations, obs) => {
+                        if (!document.body.contains(modal)) {
+                            document.removeEventListener('keydown', keydownHandler);
+                            obs.disconnect();
+                        }
+                    });
+                    observer.observe(document.body, { childList: true });
+
+
+                    let touchStartX = null;
+                    modal.addEventListener('touchstart', function(event) {
+                        if (event.touches.length === 1) {
+                            touchStartX = event.touches[0].clientX;
+                        }
+                    });
+                    modal.addEventListener('touchend', function(event) {
+                        if (touchStartX !== null && event.changedTouches.length === 1) {
+                            let touchEndX = event.changedTouches[0].clientX;
+                            let diff = touchEndX - touchStartX;
+                            if (Math.abs(diff) > 50) {
+                                if (diff > 0) {
+                                    prevBtn.onclick(event);
+                                } else {
+                                    nextBtn.onclick(event);
+                                }
+                            }
+                            touchStartX = null;
+                        }
+                    });
                 }
-            });
-        }
-    }
-});
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const mobileNav = document.getElementById('mobileNav');
-            const mobileMenu = document.querySelector('.mobile-menu');
+            }
             
-            if (!mobileNav.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileNav.classList.remove('active');
+            // Close mobile menu when clicking outside
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileMenuIcon = document.querySelector('.mobile-menu');
+            if (mobileNav.classList.contains('active') && !mobileNav.contains(e.target) && !mobileMenuIcon.contains(e.target)) {
+                closeMobileMenu();
             }
         });
     </script>
