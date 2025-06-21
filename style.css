@@ -495,7 +495,7 @@ padding: 1.2rem 1rem !important; /* spazio uguale a dx e sx */
 margin-left: auto !important;
 margin-right: auto !important;
 width: auto !important;
-margin-top: 28rem !important; /* Aggiungi o aumenta questo valore per abbassare la biografia */
+margin-top: 23rem !important; /* Aggiungi o aumenta questo valore per abbassare la biografia */
 }
 .biografia-box p {
 color: #fff !important;
