@@ -592,6 +592,171 @@
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    cursor: pointer;
+    background: #f8f9fa;
+}
+
+.artwork img,
+.placeholder-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+}
+
+/* Rimuovi o commenta tutte le media query che modificano la gallery */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0 !important;
+        padding-bottom: 0;
+    }
+    .artwork img,
+    .placeholder-image {
+        object-fit: cover !important;
+        height: 180px !important;
+        background: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block;
+        width: 100%;
+        border-radius: 0;
+    }
+    .artwork {
+        margin: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+}
+@media (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+}
+@media (max-width: 900px) {
+    .nav-links, .social-header { display: none; }
+    .mobile-menu { display: block; margin-left: 1.2rem; }
+    .mobile-header-social { display: flex; gap: 1.2rem; align-items: center; margin-left: 0.8rem; margin-right: 0.8rem; }
+    .mobile-header-social .social-icon { color: #fff; font-size: 1.5rem; transition: color 0.3s; }
+    .mobile-header-social .social-icon:hover { color: #ff6b6b; }
+    .mobile-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0,0,0,0.95); z-index: 1001; }
+    .mobile-nav.active { display: flex; }
+    .mobile-nav li { list-style: none; }
+    .mobile-nav a { color: #fff; text-decoration: none; padding: 1rem 2rem; font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.08); transition: background 0.3s; }
+    .mobile-nav a:hover { background: rgba(255, 107, 107, 0.2); }
+    .mobile-social-icons { display: none; }
+}
+@media (min-width: 901px) {
+    .mobile-header-social { display: none !important; }
+}
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideInUp 1s ease 1.5s forwards;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.instagram-link img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.instagram-link:hover {
+    transform: scale(1.1);
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #764ba2, #667eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+    background-size: 300% 300%;
+    animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+        /* Gallery */
+        .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    padding-bottom: 2rem;
+    scroll-snap-type: none;
+}
+
+        .artwork {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
             cursor: pointer;
             background: #f8f9fa;
         }
@@ -653,7 +818,6 @@
             font-size: 1.2rem;
             text-align: center;
             transition: transform 0.3s ease;
-    border-radius: 12px;
         }
 
         .artwork:hover .placeholder-image {
@@ -691,7 +855,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
-    transition: transform 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .contact-card:hover {
@@ -756,7 +920,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-in.visible {
@@ -1854,7 +2018,7 @@
                 closeMobileMenu();
             }
         });
-        
+
         // Modal event listeners
         closeBtn.addEventListener('click', closeModal);
         prevBtn.addEventListener('click', () => showImage((currentIndex - 1 + artworks.length) % artworks.length));
@@ -1862,8 +2026,8 @@
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal();
-            }
-        });
+                        }
+                    });
 
         // Touch navigation for modal
                     let touchStartX = null;
